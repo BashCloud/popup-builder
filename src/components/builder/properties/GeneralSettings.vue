@@ -1,0 +1,34 @@
+<template>
+  <div>
+    <PropertiesGroup label="Popup" sub-menu :activeGroup="activeGroup" @toggle="setActiveGroup">
+      <property-field label="Padding">
+        <LvBoxModel bottom-bar v-model="schema.style.padding" />
+      </property-field>
+      <property-field label="Width">
+        <LvUnitInput bottom-bar v-model="schema.style.width" :units="['px', 'em', 'rem', 'vh', 'vw']" />
+      </property-field>
+      <property-field label="Height">
+        <LvUnitInput bottom-bar v-model="schema.style.height" :units="['px', 'em', 'rem', 'vh', 'vw']" />
+      </property-field>
+      <property-field label="Border Radius">
+        <LvUnitInput bottom-bar v-model="schema.style.border_radius" />
+      </property-field>
+      <property-field label="Background Color">
+        <LvColorPicker bottom-bar v-model="schema.style.background_color" />
+      </property-field>
+    </PropertiesGroup>
+    <PropertiesGroup label="Backdrop" sub-menu :activeGroup="activeGroup" @toggle="setActiveGroup">
+      <property-field label="Background Color">
+        <LvColorPicker bottom-bar v-model="schema.style.backdrop.background_color" />
+      </property-field>
+    </PropertiesGroup>
+  </div>
+</template>
+
+<script>
+import customizationsMixin from '../mixins/customizationsMixin.js';
+
+export default {
+  mixins: [customizationsMixin],
+};
+</script>

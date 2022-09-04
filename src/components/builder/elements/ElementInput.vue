@@ -1,10 +1,21 @@
 <template>
-  <input class="popup-input" :placeholder="element.placeholder" />
+  <input class="popup-input" :placeholder="element.placeholder" :style="elStyle" />
 </template>
 
 <script>
+import elementDefaultStyle from '../mixins/elementDefaultStyle.js';
+
 export default {
   props: ['element'],
+  mixins: [elementDefaultStyle],
+  computed: {
+    elStyle() {
+      return {
+        ...this.textStyle,
+        ...this.elementStyle,
+      };
+    },
+  },
 };
 </script>
 
@@ -12,11 +23,6 @@ export default {
 .popup-input {
   outline: none;
   border: none;
-  border-radius: 12px;
-  background-color: #ffffff;
-  cursor: pointer;
-  font-size: 18px;
-  padding: 12px 16px;
   width: 100%;
 }
 </style>

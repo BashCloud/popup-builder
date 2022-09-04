@@ -6,7 +6,7 @@
 
 .popup-pg__row {
   padding: 8px;
-  border-radius: 0px 8px 8px 0px;
+  border-radius: 0px 0px 8px 0px;
   transition: box-shadow, opacity 0.25s cubic-bezier(0, 0, 0.2, 1);
   position: relative;
   &.--selected {
@@ -80,15 +80,8 @@
 }
 
 .popup-pg__body-wrap {
-  margin: 32px auto;
-  border-radius: 50%;
-  height: 600px;
-  width: 600px;
-  padding: 100px;
   position: relative;
-
   // overflow: hidden;
-  background: #b95555;
   box-shadow: 25px 25px 37px #a8a8a8, -25px -25px 37px #ffffff;
 
   &::before {

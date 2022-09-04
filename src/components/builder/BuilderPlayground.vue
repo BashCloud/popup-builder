@@ -2,7 +2,7 @@
   <div @click="activeRowId = ''">
     <!----------------------------------------------PLAYGROUND------------------------------------------------------------>
     <section class="popup-pg" v-if="schema">
-      <div class="popup-pg__body-wrap">
+      <div class="popup-pg__body-wrap" :style="popupBodyStyle">
         <div class="popup-pg__body">
           <container @drop="dndDrop" @dragStart="dndDragStart" @dragEnd="dndDragEnd" group-name="builder" v-if="schema" style="height: 100%">
             <draggable v-for="(row, rowIndex) in schema.rows" :key="row.id">
@@ -47,9 +47,11 @@ import './Playground.scss';
 import { Container, Draggable } from '../smooth-dnd/main';
 import PlaygroundElements from './elements/Index.vue';
 import dragPlaygroundRowsMixin from './mixins/dragPlaygroundRowsMixin';
+import popupStyleMixin from './mixins/popupStyleMixin.js';
+
 export default {
   name: 'BuilderPlayground',
-  mixins: [dragPlaygroundRowsMixin],
+  mixins: [dragPlaygroundRowsMixin, popupStyleMixin],
   components: {
     PlaygroundElements,
     Container,
@@ -125,7 +127,8 @@ export default {
     },
 
     deleteRow(rowIndex) {
-      return this.schema.rows.splice(rowIndex, 1);
+      this.activeRowId = '';
+      this.schema.rows.splice(rowIndex, 1);
     },
     unbindEventListeners() {
       window.removeEventListener('keydown', this.handleKeyDown);

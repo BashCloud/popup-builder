@@ -1,6 +1,13 @@
 import { uid } from '@/utils/uid';
 
 export function createNewElement(type, defaults, configs) {
+  let textDefaultStyle = {
+    color: '',
+    font_size: '',
+    font_weight: '',
+    line_height: '',
+    text_align: '',
+  };
   let newElementDefaults = {
     width: '100%',
     z_index: 1,
@@ -8,6 +15,12 @@ export function createNewElement(type, defaults, configs) {
     left: '0px',
     is_hidden: false,
     custom_id: '',
+    style: {
+      background_color: '',
+      padding: '',
+      border_radius: '',
+      opacity: '',
+    },
   };
   let newElement;
   switch (type) {
@@ -20,6 +33,14 @@ export function createNewElement(type, defaults, configs) {
         placeholder: 'E-mail',
         name: uid(),
         required: false,
+        style: {
+          ...newElementDefaults.style,
+          ...textDefaultStyle,
+          border_radius: '12px',
+          background_color: '#ffffff',
+          font_size: '18px',
+          padding: '12px 16px',
+        },
       };
       break;
     }
@@ -42,6 +63,16 @@ export function createNewElement(type, defaults, configs) {
         btn_margin: '12px',
         hidden: false,
         cta_action_value: '',
+        style: {
+          ...newElementDefaults.style,
+          ...textDefaultStyle,
+          background_color: '#000000',
+          color: '#ffffff',
+          padding: '20px 48px',
+          border_radius: '12px',
+          font_size: '20px',
+          text_align: 'center',
+        },
       };
       break;
     }
@@ -71,6 +102,11 @@ export function createNewElement(type, defaults, configs) {
         text: 'Add new Text Here',
         font_size: '',
         required: false,
+        style: {
+          ...newElementDefaults.style,
+          ...textDefaultStyle,
+          color: '#c7c7c7',
+        },
       };
       break;
     }
@@ -96,14 +132,29 @@ export function createNewElement(type, defaults, configs) {
         element_type: 'ElementCustomHTML',
         read_only: false,
         markup: 'Custom <b>HTML</b> block',
+        style: {
+          ...newElementDefaults.style,
+          ...textDefaultStyle,
+          color: '#c7c7c7',
+        },
       };
       break;
     }
+  }
+  let defaultGivenStyles = {};
+  if (defaults && defaults.style) {
+    defaultGivenStyles = defaults.style;
+    delete defaults.style;
   }
   return {
     ...newElementDefaults,
     ...newElement,
     ...defaults,
+    style: {
+      ...newElementDefaults.style,
+      ...newElement.style,
+      ...defaultGivenStyles,
+    },
     id: uid(),
   };
 }

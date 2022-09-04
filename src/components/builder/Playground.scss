@@ -1,0 +1,109 @@
+.popup-pg {
+  margin: 0 auto;
+  max-width: 100%;
+  height: 100%;
+}
+
+.popup-pg__row {
+  padding: 8px;
+  border-radius: 0px 8px 8px 0px;
+  transition: box-shadow, opacity 0.25s cubic-bezier(0, 0, 0.2, 1);
+  position: relative;
+  &.--selected {
+    box-shadow: 3px 3px 12px 3px rgba(0, 0, 0, 0.15);
+  }
+  &.--hovered {
+    box-shadow: 3px 3px 12px 3px rgba(0, 0, 0, 0.15);
+  }
+  &.--hidden {
+    opacity: 0.6;
+  }
+}
+
+.popup-pg__row-mover {
+  opacity: 0;
+  position: absolute;
+  top: 0px;
+  right: 100%;
+  height: 100%;
+  width: 16px;
+  background-color: #007f7f;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.2s;
+  cursor: move;
+  border-radius: 4px 0px 0px 4px;
+  /* box-shadow: 3px 3px 12px 3px #ebebeb; */
+  &.--active {
+    opacity: 1;
+  }
+  &:hover {
+    background-color: #046f70;
+  }
+}
+
+.popup-pg__row-actions {
+  position: absolute;
+  top: -32px;
+  right: 0px;
+  background-color: #007f7f;
+  display: flex;
+  padding: 0px 12px;
+  border-radius: 8px 8px 0px 0px;
+  /* box-shadow: 3px 3px 12px 3px #ebebeb; */
+}
+
+.popup-pg__row-action-btn {
+  /* background-color: rgb(210, 65, 65); */
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 32px;
+  width: 32px;
+  font-size: 16px;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.12);
+  }
+}
+/* ********** */
+/* Sortable */
+.draggable {
+  cursor: move;
+}
+
+.popup-pg__body-wrap {
+  margin: 32px auto;
+  border-radius: 50%;
+  height: 600px;
+  width: 600px;
+  padding: 100px;
+  position: relative;
+
+  // overflow: hidden;
+  background: #b95555;
+  box-shadow: 25px 25px 37px #a8a8a8, -25px -25px 37px #ffffff;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    right: 16px;
+    bottom: 16px;
+    z-index: 0;
+    border: 4px solid #ffffff;
+    border-radius: 50%;
+  }
+  .popup-pg__body {
+    height: 100%;
+    position: relative;
+  }
+}

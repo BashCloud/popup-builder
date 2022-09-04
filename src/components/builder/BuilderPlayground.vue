@@ -37,13 +37,16 @@
             </draggable>
           </container>
         </div>
+        <!-- <template v-if="true"> <div class="padding-guideline --vertical"></div> </template> -->
       </div>
+      <div class="popup-backdrop" :style="popupBackdropStyle"></div>
     </section>
   </div>
 </template>
 
 <script>
 import './Playground.scss';
+import './Preview.scss';
 import { Container, Draggable } from '../smooth-dnd/main';
 import PlaygroundElements from './elements/Index.vue';
 import dragPlaygroundRowsMixin from './mixins/dragPlaygroundRowsMixin';

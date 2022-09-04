@@ -10,5 +10,14 @@ export default {
         backgroundColor: this.schema.style.background_color,
       };
     },
+    popupBackdropStyle() {
+      const backdropBlur = this.schema?.style?.backdrop?.blur;
+      const backdropOpacity = this.schema?.style?.backdrop?.opacity;
+      return {
+        background: this.schema.style.backdrop.background_color,
+        backdropFilter: backdropBlur && `blur(${backdropBlur})`,
+        filter: `${backdropBlur ? `blur(${backdropBlur}) ` : ''}opacity(${backdropOpacity})`,
+      };
+    },
   },
 };

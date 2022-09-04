@@ -21,6 +21,12 @@
       <property-field label="Background Color">
         <LvColorPicker bottom-bar v-model="schema.style.backdrop.background_color" />
       </property-field>
+      <property-field label="Opacity">
+        <LvUnitInput bottom-bar v-model="schema.style.backdrop.opacity" :units="['%']" />
+      </property-field>
+      <property-field label="Background Blur">
+        <LvUnitInput bottom-bar v-model="schema.style.backdrop.blur" :units="['px']" />
+      </property-field>
     </PropertiesGroup>
   </div>
 </template>

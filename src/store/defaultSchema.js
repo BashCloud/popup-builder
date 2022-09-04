@@ -9,7 +9,9 @@ const defaultSchema = {
     padding: '100px',
     background_color: '#b95555',
     backdrop: {
-      background_color: 'rgba(0, 0, 0, 0.1)',
+      background_color: '#000000',
+      opacity: '50%',
+      blur: '5px',
     },
   },
   rows: [

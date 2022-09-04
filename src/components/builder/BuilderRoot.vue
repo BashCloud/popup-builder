@@ -30,6 +30,7 @@ export default {
   align-items: stretch;
   height: 100vh;
   .builder-sidebar {
+    z-index: 1000;
     text-align: left;
     max-width: 320px;
     min-width: 320px;

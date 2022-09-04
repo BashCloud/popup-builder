@@ -22,6 +22,7 @@ const defaultSchema = {
       text: 'All the text and elements in this popup should be editable and draggable',
       style: {
         font_size: '32px',
+        color: '#ffffff',
       },
     }),
     createNewRowWithElement('ElementInput'),
@@ -32,6 +33,7 @@ const defaultSchema = {
       text: 'No credit card required. No Surprises',
       style: {
         font_size: '16px',
+        color: '#ffffff',
       },
     }),
   ],

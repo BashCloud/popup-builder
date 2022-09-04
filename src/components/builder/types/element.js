@@ -105,7 +105,7 @@ export function createNewElement(type, defaults, configs) {
         style: {
           ...newElementDefaults.style,
           ...textDefaultStyle,
-          color: '#c7c7c7',
+          color: '#d7d7d7',
         },
       };
       break;
@@ -135,7 +135,7 @@ export function createNewElement(type, defaults, configs) {
         style: {
           ...newElementDefaults.style,
           ...textDefaultStyle,
-          color: '#c7c7c7',
+          color: '#d7d7d7',
         },
       };
       break;

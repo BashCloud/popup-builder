@@ -1,6 +1,7 @@
 import { createNewRowWithElement } from '@/components/builder/types';
 
 const defaultSchema = {
+  display_delay: '5000ms',
   style: {
     margin: '32px auto', // te be handle differently
     border_radius: '50%',

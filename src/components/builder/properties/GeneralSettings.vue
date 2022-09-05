@@ -42,6 +42,9 @@
       <property-field label="Popup Animation">
         <lvDropdown bottom-bar :options="animationTypes" v-model="schema.style.animation_type" />
       </property-field>
+      <property-field label="Popup Delay">
+        <LvUnitInput bottom-bar v-model="schema.display_delay" :units="['ms']" />
+      </property-field>
     </PropertiesGroup>
   </div>
 </template>

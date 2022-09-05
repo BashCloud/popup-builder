@@ -5,6 +5,7 @@ const state = {
   activeRowId: '',
   appConfig: {
     highlight_droparea: true,
+    preview_device: 'desktop',
   },
 };
 // --------------------------------------------------

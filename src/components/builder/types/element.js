@@ -116,7 +116,7 @@ export function createNewElement(type, defaults, configs) {
         ...newElementDefaults,
         element_type: 'ElementImage',
         read_only: true,
-        img_url: '/stars_dummy.png',
+        img_url: 'https://popup-builder.netlify.app/stars_dummy.png',
         img_alt: '',
         width: '300px',
         height: '300px',

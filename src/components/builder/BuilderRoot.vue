@@ -6,6 +6,7 @@
     <div class="builder-playground">
       <BuilderPlayground />
     </div>
+    <BuilderFooter />
   </div>
 </template>
 
@@ -14,10 +15,12 @@ import 'animate.css';
 import builderStore from '@/store/builder.js';
 import BuilderSidebar from './BuilderSidebar.vue';
 import BuilderPlayground from './BuilderPlayground.vue';
+import BuilderFooter from './BuilderFooter.vue';
 export default {
   components: {
     BuilderSidebar,
     BuilderPlayground,
+    BuilderFooter,
   },
   created() {
     this.$store.registerModule('builder', builderStore);

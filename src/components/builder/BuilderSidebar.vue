@@ -1,5 +1,6 @@
 <template>
   <div>
+    <h3>Design Interactive Popup</h3>
     <PropertiesGroup label="General Settings" :activeGroup="activeGroup" @toggle="setActiveGroup">
       <GeneralSettings />
     </PropertiesGroup>
@@ -42,5 +43,11 @@ export default {
 <style lang="scss">
 .lv-colorpicker-wrapper {
   display: block !important;
+}
+h3 {
+  text-align: center;
+  padding: 12px;
+  text-transform: uppercase;
+  opacity: 0.7;
 }
 </style>

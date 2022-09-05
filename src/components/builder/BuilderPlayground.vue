@@ -3,7 +3,7 @@
     <!----------------------------------------------PLAYGROUND------------------------------------------------------------>
     <section class="popup-pg" v-if="schema">
       <div class="popup-pg__body-wrap" :style="popupBodyStyle" :class="popupAnimationClass">
-        <div class="popup-pg__body" :class="{ '--highlight': appConfig.highlight_droparea }">
+        <div class="popup-pg__body">
           <container @drop="dndDrop" @dragStart="dndDragStart" @dragEnd="dndDragEnd" group-name="builder" v-if="schema" style="height: 100%">
             <draggable v-for="(row, rowIndex) in schema.rows" :key="row.id">
               <div
@@ -37,7 +37,12 @@
             </draggable>
           </container>
         </div>
-        <!-- <template v-if="true"> <div class="padding-guideline --vertical"></div> </template> -->
+        <template v-if="appConfig.highlight_droparea">
+          <div class="padding-guideline --vertical --left" :style="{ left: decodePadding(schema.style.padding).left }"></div>
+          <div class="padding-guideline --vertical --right" :style="{ right: decodePadding(schema.style.padding).right }"></div>
+          <div class="padding-guideline --horizontal --top" :style="{ top: decodePadding(schema.style.padding).top }"></div>
+          <div class="padding-guideline --horizontal --bottom" :style="{ bottom: decodePadding(schema.style.padding).bottom }"></div>
+        </template>
       </div>
       <div class="popup-backdrop" :style="popupBackdropStyle"></div>
     </section>
@@ -155,6 +160,23 @@ export default {
     deleteRow(rowIndex) {
       this.activeRowId = '';
       this.schema.rows.splice(rowIndex, 1);
+    },
+    decodePadding(value) {
+      const val_array = value ? value.split(' ') : ['0px'];
+      const length = val_array.length;
+      if (length == 1) {
+        const [all] = val_array;
+        return { top: all, right: all, bottom: all, left: all };
+      } else if (length == 2) {
+        const [y, x] = val_array;
+        return { top: y, bottom: y, left: x, right: x };
+      } else if (length == 3) {
+        const [_top, _right, _bottom] = val_array;
+        return { top: _top, bottom: _bottom, right: _right, left: 0 };
+      } else if (length == 4) {
+        const [_top, _right, _bottom, _left] = val_array;
+        return { top: _top, bottom: _bottom, right: _right, left: _left };
+      }
     },
     unbindEventListeners() {
       window.removeEventListener('keydown', this.handleKeyDown);

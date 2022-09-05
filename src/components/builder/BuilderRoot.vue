@@ -10,6 +10,7 @@
 </template>
 
 <script>
+import 'animate.css';
 import builderStore from '@/store/builder.js';
 import BuilderSidebar from './BuilderSidebar.vue';
 import BuilderPlayground from './BuilderPlayground.vue';

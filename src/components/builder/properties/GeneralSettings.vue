@@ -28,6 +28,11 @@
         <LvUnitInput bottom-bar v-model="schema.style.backdrop.blur" :units="['px']" />
       </property-field>
     </PropertiesGroup>
+    <PropertiesGroup label="Display settings" sub-menu :activeGroup="activeGroup" @toggle="setActiveGroup">
+      <property-field label="Popup Animation">
+        <lvDropdown bottom-bar :options="animationTypes" v-model="schema.style.animation_type" />
+      </property-field>
+    </PropertiesGroup>
   </div>
 </template>
 
@@ -36,5 +41,10 @@ import customizationsMixin from '../mixins/customizationsMixin.js';
 
 export default {
   mixins: [customizationsMixin],
+  data() {
+    return {
+      animationTypes: ['bounce', 'flash', 'pulse', 'rubberBand', 'shakeX', 'shakeY', 'headShake', 'swing', 'tada', 'wobble', 'jello', 'heartBeat', 'bounceIn', 'bounceInDown', 'bounceInLeft', 'bounceInRight', 'bounceInUp', 'fadeIn', 'fadeInDown', 'fadeInDownBig', 'fadeInLeft', 'fadeInLeftBig', 'fadeInRight', 'fadeInRightBig', 'fadeInUp', 'fadeInUpBig', 'fadeInTopLeft', 'fadeInTopRight', 'fadeInBottomLeft', 'fadeInBottomRigh', 'rotateIn', 'rotateInDownLeft', 'rotateInDownRight', 'rotateInUpLeft', 'rotateInUpRight', 'jackInTheBox', 'rollIn', 'zoomIn', 'zoomInDown', 'zoomInLeft', 'zoomInRight', 'zoomInUp', 'slideInDown', 'slideInLeft', 'slideInRight', 'slideInUp', 'lightSpeedInRight', 'lightSpeedInLeft'],
+    };
+  },
 };
 </script>

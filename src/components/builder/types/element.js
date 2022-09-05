@@ -116,7 +116,7 @@ export function createNewElement(type, defaults, configs) {
         ...newElementDefaults,
         element_type: 'ElementImage',
         read_only: true,
-        img_url: 'http://cdn.onlinewebfonts.com/svg/img_530228.png',
+        img_url: '/stars_dummy.png',
         img_alt: '',
         width: '300px',
         height: '300px',

@@ -2,7 +2,7 @@
   <div @click="activeRowId = ''">
     <!----------------------------------------------PLAYGROUND------------------------------------------------------------>
     <section class="popup-pg" v-if="schema">
-      <div class="popup-pg__body-wrap" :style="popupBodyStyle">
+      <div class="popup-pg__body-wrap" :style="popupBodyStyle" :class="popupAnimationClass">
         <div class="popup-pg__body">
           <container @drop="dndDrop" @dragStart="dndDragStart" @dragEnd="dndDragEnd" group-name="builder" v-if="schema" style="height: 100%">
             <draggable v-for="(row, rowIndex) in schema.rows" :key="row.id">

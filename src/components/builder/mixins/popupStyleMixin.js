@@ -16,8 +16,11 @@ export default {
       return {
         background: this.schema.style.backdrop.background_color,
         backdropFilter: backdropBlur && `blur(${backdropBlur})`,
-        filter: `${backdropBlur ? `blur(${backdropBlur}) ` : ''}opacity(${backdropOpacity})`,
+        filter: backdropOpacity && `opacity(${backdropOpacity})`,
       };
+    },
+    popupAnimationClass() {
+      return this.schema.style.animation_type ? `animate__animated animate__${this.schema.style.animation_type}` : '';
     },
   },
 };

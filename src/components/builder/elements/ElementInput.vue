@@ -18,11 +18,3 @@ export default {
   },
 };
 </script>
-
-<style lang="scss">
-.popup-input {
-  outline: none;
-  border: none;
-  width: 100%;
-}
-</style>

@@ -52,6 +52,7 @@
 <script>
 import './Playground.scss';
 import './Preview.scss';
+import './elements.scss';
 import { Container, Draggable } from '../smooth-dnd/main';
 import PlaygroundElements from './elements/Index.vue';
 import dragPlaygroundRowsMixin from './mixins/dragPlaygroundRowsMixin';

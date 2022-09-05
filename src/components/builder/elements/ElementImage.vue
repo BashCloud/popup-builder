@@ -19,12 +19,3 @@ export default {
   },
 };
 </script>
-
-<style lang="scss">
-.popup-image {
-  height: 50px;
-  margin: auto;
-  display: block;
-  // opacity: 0.3;
-}
-</style>

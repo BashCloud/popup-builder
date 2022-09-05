@@ -155,6 +155,6 @@ export function createNewElement(type, defaults, configs) {
       ...newElement.style,
       ...defaultGivenStyles,
     },
-    id: uid(),
+    id: `el_${uid()}`,
   };
 }

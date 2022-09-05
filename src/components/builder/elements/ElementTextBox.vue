@@ -20,13 +20,3 @@ export default {
   },
 };
 </script>
-
-<style lang="scss">
-.popup-text {
-  // color: #ffffff;
-  // font-size: 16px;
-  // line-height: 40px;
-  font-weight: 600;
-  text-align: center;
-}
-</style>

@@ -1,6 +1,7 @@
 import express from 'express';
 import { createSSRApp } from 'vue';
 import { renderToString } from 'vue/server-renderer';
+import { readFile } from 'fs/promises';
 
 import ElementButton from './components/ElementButton.js';
 import ElementInput from './components/ElementInput.js';
@@ -9,8 +10,6 @@ import ElementImage from './components/ElementImage.js';
 import ElementTextBox from './components/ElementTextBox.js';
 
 import popupStyleMixin from './mixins/popupStyleMixin.js';
-import { readFile } from 'fs/promises';
-const server = express();
 
 import { initializeApp, cert } from 'firebase-admin/app';
 import { getFirestore } from 'firebase-admin/firestore';
@@ -22,6 +21,7 @@ initializeApp({
 });
 const db = getFirestore();
 
+const server = express();
 server.get('/pixel.js', async (req, res) => {
   try {
     const css = await readFile('./style.min.css', 'utf8');
@@ -53,7 +53,6 @@ server.get('/pixel.js', async (req, res) => {
     </div>
     <div class="popup-backdrop" :style="popupBackdropStyle"></div>
   </section>
-  <style>${css}</style>
   `,
     });
 

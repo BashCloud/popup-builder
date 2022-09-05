@@ -13,13 +13,41 @@
       </div>
     </div>
     <div class="footer-actions">
-      <div class="btn save-btn">SAVE</div>
+      <div class="btn save-btn" @click="saveChanges">SAVE</div>
     </div>
   </div>
 </template>
 
 <script>
-export default {};
+import firebase from 'firebase/app';
+import 'firebase/firestore';
+export default {
+  computed: {
+    schema: {
+      get: function () {
+        return this.$store.state.builder.schema;
+      },
+      set: function (newValue) {
+        this.$store.dispatch('builder/setSchema', newValue);
+      },
+    },
+    appConfig: {
+      get: function () {
+        return this.$store.state.builder.appConfig;
+      },
+      set: function (newValue) {
+        this.$store.dispatch('builder/setAppConfig', newValue);
+      },
+    },
+  },
+  methods: {
+    async saveChanges() {
+      await firebase.firestore().collection('popups').doc(this.schema.id).set(this.schema);
+      console.log('Saved !!');
+      alert('Your design is saved !!');
+    },
+  },
+};
 </script>
 
 <style lang="scss">

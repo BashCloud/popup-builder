@@ -1,6 +1,8 @@
+import { uid } from '@/utils/uid';
 import { createNewRowWithElement } from '@/components/builder/types';
 
 const defaultSchema = {
+  id: `pop_${uid()}`,
   display_delay: '5000ms',
   style: {
     margin: '32px auto', // te be handle differently

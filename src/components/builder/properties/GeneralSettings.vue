@@ -28,6 +28,13 @@
         <LvUnitInput bottom-bar v-model="schema.style.backdrop.blur" :units="['px']" />
       </property-field>
     </PropertiesGroup>
+
+    <PropertiesGroup label="Close Button" sub-menu :activeGroup="activeGroup" @toggle="setActiveGroup">
+      <property-field label="Close button will be available soon !"> </property-field>
+    </PropertiesGroup>
+    <PropertiesGroup label="Submit Action" sub-menu :activeGroup="activeGroup" @toggle="setActiveGroup">
+      <property-field label="Submit action will be available soon !"> </property-field>
+    </PropertiesGroup>
     <PropertiesGroup label="Display settings" sub-menu :activeGroup="activeGroup" @toggle="setActiveGroup">
       <property-field label="Popup Animation">
         <lvDropdown bottom-bar :options="animationTypes" v-model="schema.style.animation_type" />

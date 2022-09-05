@@ -4,6 +4,7 @@ import { createNewRowWithElement } from '@/components/builder/types';
 const defaultSchema = {
   id: `pop_${uid()}`,
   display_delay: '5000ms',
+  display_animation: 'pulse',
   style: {
     margin: '32px auto', // te be handle differently
     border_radius: '50%',
@@ -11,7 +12,6 @@ const defaultSchema = {
     width: '600px',
     padding: '100px',
     background_color: '#b95555',
-    display_animation: 'pulse',
     backdrop: {
       background_color: '#000000',
       opacity: '50%',

@@ -13,7 +13,8 @@
       </div>
     </div>
     <div class="footer-actions">
-      <div class="btn save-btn" @click="saveChanges">SAVE</div>
+      <button class="btn preview-btn" @click="previewChanges" :disabled="isSaved === false">PREVIEW</button>
+      <button class="btn save-btn" @click="saveChanges">SAVE</button>
     </div>
   </div>
 </template>
@@ -22,6 +23,11 @@
 import firebase from 'firebase/app';
 import 'firebase/firestore';
 export default {
+  data() {
+    return {
+      isSaved: false,
+    };
+  },
   computed: {
     schema: {
       get: function () {
@@ -45,6 +51,14 @@ export default {
       await firebase.firestore().collection('popups').doc(this.schema.id).set(this.schema);
       console.log('Saved !!', this.schema.id);
       alert('Your design is saved !!');
+      this.isSaved = true;
+    },
+    async previewChanges() {
+      if (!this.isSaved) {
+        alert('Please save your changes first !!');
+        return;
+      }
+      window.open(`/preview?id=${this.schema.id}`, '_blank');
     },
   },
 };
@@ -82,16 +96,31 @@ export default {
     }
   }
 }
+.footer-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
 .btn {
   border: none;
   outline: none;
   cursor: pointer;
   padding: 8px;
   border-radius: 4px;
+  &:disabled {
+    opacity: 0.6;
+    // pointer-events: none;
+  }
 }
 .save-btn {
   background-color: #000000;
   color: #ffffff;
   padding: 8px 24px;
+}
+.preview-btn {
+  background-color: #ffffff;
+  color: #000000;
+  padding: 8px 24px;
+  border: 1px solid #000000;
 }
 </style>

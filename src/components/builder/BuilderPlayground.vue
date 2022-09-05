@@ -88,6 +88,21 @@ export default {
     },
   },
 
+  watch: {
+    'schema.style.animation_type': {
+      handler(newValue) {
+        // hack to prevent smooth dnd in playground.
+        setTimeout(() => {
+          let popupBodyEl = document.getElementsByClassName('popup-pg__body-wrap');
+          if (popupBodyEl) {
+            popupBodyEl[0].className = 'popup-pg__body-wrap animate__animated';
+          }
+        }, 1000);
+      },
+      immediate: true,
+    },
+  },
+
   mounted() {
     window.addEventListener('keydown', this.handleKeyDown);
   },

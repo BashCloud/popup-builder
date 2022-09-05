@@ -11,7 +11,7 @@ const defaultSchema = {
     width: '600px',
     padding: '100px',
     background_color: '#b95555',
-    animation_type: 'pulse',
+    display_animation: 'pulse',
     backdrop: {
       background_color: '#000000',
       opacity: '50%',

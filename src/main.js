@@ -4,6 +4,7 @@ import './registerServiceWorker';
 import router from './router';
 import store from './store';
 import firebase from 'firebase/app';
+// import { firebaseConfig } from './config/index.js';
 
 Vue.config.productionTip = false;
 

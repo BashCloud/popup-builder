@@ -43,7 +43,7 @@ export default {
   methods: {
     async saveChanges() {
       await firebase.firestore().collection('popups').doc(this.schema.id).set(this.schema);
-      console.log('Saved !!');
+      console.log('Saved !!', this.schema.id);
       alert('Your design is saved !!');
     },
   },

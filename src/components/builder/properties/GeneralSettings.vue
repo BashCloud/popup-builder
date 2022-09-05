@@ -40,7 +40,7 @@
     </PropertiesGroup>
     <PropertiesGroup label="Display settings" sub-menu :activeGroup="activeGroup" @toggle="setActiveGroup">
       <property-field label="Popup Animation">
-        <lvDropdown bottom-bar :options="animationTypes" v-model="schema.style.animation_type" />
+        <lvDropdown bottom-bar :options="animationTypes" v-model="schema.display_animation" />
       </property-field>
       <property-field label="Popup Delay">
         <LvUnitInput bottom-bar v-model="schema.display_delay" :units="['ms']" />

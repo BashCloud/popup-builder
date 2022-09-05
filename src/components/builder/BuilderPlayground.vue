@@ -103,7 +103,7 @@ export default {
   },
 
   watch: {
-    'schema.style.animation_type': {
+    'schema.display_animation': {
       handler(newValue) {
         // hack to prevent smooth dnd in playground.
         setTimeout(() => {

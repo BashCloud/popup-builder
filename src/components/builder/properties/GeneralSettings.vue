@@ -4,6 +4,9 @@
       <property-field label="Padding">
         <LvBoxModel bottom-bar v-model="schema.style.padding" />
       </property-field>
+      <property-field>
+        <LvToggleSwitch label="Highlight drop-area" bottom-bar v-model="appConfig.highlight_droparea" />
+      </property-field>
       <property-field label="Width">
         <LvUnitInput bottom-bar v-model="schema.style.width" :units="['px', 'em', 'rem', 'vh', 'vw']" />
       </property-field>
@@ -52,6 +55,16 @@ export default {
     return {
       animationTypes: ['bounce', 'flash', 'pulse', 'rubberBand', 'shakeX', 'shakeY', 'headShake', 'swing', 'tada', 'wobble', 'jello', 'heartBeat', 'bounceIn', 'bounceInDown', 'bounceInLeft', 'bounceInRight', 'bounceInUp', 'fadeIn', 'fadeInDown', 'fadeInDownBig', 'fadeInLeft', 'fadeInLeftBig', 'fadeInRight', 'fadeInRightBig', 'fadeInUp', 'fadeInUpBig', 'fadeInTopLeft', 'fadeInTopRight', 'fadeInBottomLeft', 'fadeInBottomRigh', 'rotateIn', 'rotateInDownLeft', 'rotateInDownRight', 'rotateInUpLeft', 'rotateInUpRight', 'jackInTheBox', 'rollIn', 'zoomIn', 'zoomInDown', 'zoomInLeft', 'zoomInRight', 'zoomInUp', 'slideInDown', 'slideInLeft', 'slideInRight', 'slideInUp', 'lightSpeedInRight', 'lightSpeedInLeft'],
     };
+  },
+  computed: {
+    appConfig: {
+      get: function () {
+        return this.$store.state.builder.appConfig;
+      },
+      set: function (newValue) {
+        this.$store.dispatch('builder/setAppConfig', newValue);
+      },
+    },
   },
 };
 </script>

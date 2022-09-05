@@ -80,6 +80,11 @@
   position: absolute;
 }
 
+.popup-pg__body.--highlight {
+  border: 1px dashed rgba(0, 0, 0, 0.3);
+  margin: -1px;
+}
+
 // .smooth-dnd-ghost {
 //   transform: translate3d(0, 0, 0) !important;
 // }

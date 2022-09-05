@@ -8,7 +8,7 @@ const defaultSchema = {
     width: '600px',
     padding: '100px',
     background_color: '#b95555',
-    animation_type: 'fadeIn',
+    animation_type: 'pulse',
     backdrop: {
       background_color: '#000000',
       opacity: '50%',

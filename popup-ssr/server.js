@@ -71,3 +71,5 @@ server.get('/pixel.js', async (req, res) => {
 server.listen(3000, () => {
   console.log('ready');
 });
+
+module.exports = server;

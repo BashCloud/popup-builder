@@ -14,6 +14,7 @@ export default {
       return {
         backgroundColor: this.element.style.background_color,
         padding: this.element.style.padding,
+        margin: this.element.style.margin,
         borderRadius: this.element.style.border_radius,
         opacity: this.element.style.opacity,
       };

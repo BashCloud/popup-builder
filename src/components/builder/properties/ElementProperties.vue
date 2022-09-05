@@ -3,6 +3,9 @@
     <property-field label="Padding">
       <LvBoxModel bottom-bar v-model="activeElement.style.padding" />
     </property-field>
+    <property-field label="Margin">
+      <LvBoxModel bottom-bar v-model="activeElement.style.margin" />
+    </property-field>
     <property-field label="Border Radius">
       <LvUnitInput bottom-bar v-model="activeElement.style.border_radius" />
     </property-field>

@@ -18,6 +18,7 @@ export function createNewElement(type, defaults, configs) {
     style: {
       background_color: '',
       padding: '',
+      margin: '8px',
       border_radius: '',
       opacity: '',
     },
@@ -122,6 +123,10 @@ export function createNewElement(type, defaults, configs) {
         height: '300px',
         margin: 0,
         align: 'center',
+        style: {
+          ...newElementDefaults.style,
+          margin: '8px auto',
+        },
       };
       break;
     }

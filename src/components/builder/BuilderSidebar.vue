@@ -26,6 +26,11 @@ export default {
     AllElements,
     ElementProperties,
   },
+  data() {
+    return {
+      activeGroup: 'General Settings',
+    };
+  },
   watch: {
     activeRowId(newValue) {
       this.activeGroup = newValue ? 'Element Properties' : 'Add Elements';

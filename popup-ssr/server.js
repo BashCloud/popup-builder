@@ -59,7 +59,11 @@ server.get('/pixel.js', async (req, res) => {
 
     renderToString(app).then(html => {
       const popupDom = `<style>${css}</style>${html}`;
-      const result = `const popupDom = \`${popupDom}\`; const displayDelay = ${parseFloat(schema.display_delay, 10)}; ${js}`;
+      const result = `const popupDom = \`${popupDom}\`; 
+        const displayDelay = ${parseFloat(schema.display_delay, 10)}; 
+        const popupWidth = ${parseFloat(schema.style.width)}; 
+        ${js}; 
+      `;
       res.setHeader('content-type', 'text/javascript');
       res.send(result);
     });

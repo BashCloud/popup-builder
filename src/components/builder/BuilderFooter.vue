@@ -108,7 +108,7 @@ export default {
   padding: 8px;
   border-radius: 4px;
   &:disabled {
-    opacity: 0.6;
+    opacity: 0.3;
     // pointer-events: none;
   }
 }

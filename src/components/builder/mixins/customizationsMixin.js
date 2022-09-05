@@ -2,6 +2,7 @@ import LvToggleSwitch from 'lightvue/toggle-switch';
 import LvInput from 'lightvue/input';
 import LvColorPicker from 'lightvue/color-picker';
 import LvButton from 'lightvue/button';
+import LvTextArea from 'lightvue/textarea';
 import LvRangeSlider from 'lightvue/range-slider';
 import LvDropdown from 'lightvue/dropdown';
 import LvCollapsible from 'lightvue/collapsible';
@@ -17,6 +18,7 @@ export default {
     LvInput,
     LvColorPicker,
     LvButton,
+    LvTextArea,
     LvRangeSlider,
     LvDropdown,
     LvCollapsible,

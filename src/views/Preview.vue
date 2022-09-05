@@ -1,6 +1,7 @@
 <template>
   <div>
-    <h4>Preview Page</h4>
+    <h3>Preview Page</h3>
+    <p>Please wait a few seconds, to see the magic...</p>
   </div>
 </template>
 

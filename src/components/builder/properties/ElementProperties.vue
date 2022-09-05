@@ -26,6 +26,15 @@
     <property-field label="Image URL" v-if="activeElement.element_type === 'ElementImage'">
       <lvInput bottom-bar v-model="activeElement.img_url" />
     </property-field>
+    <property-field label="Text Content" v-if="activeElement.element_type === 'ElementTextBox'">
+      <lvTextArea bottom-bar auto-resize v-model="activeElement.text" />
+    </property-field>
+    <property-field label="HTML Content" v-if="activeElement.element_type === 'ElementCustomHTML'">
+      <lvTextArea bottom-bar auto-resize v-model="activeElement.markup" />
+    </property-field>
+    <property-field label="Button Label" v-if="activeElement.element_type === 'ElementButton'">
+      <lvInput bottom-bar v-model="activeElement.label" />
+    </property-field>
   </div>
 </template>
 

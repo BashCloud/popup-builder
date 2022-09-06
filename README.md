@@ -39,7 +39,7 @@ npm run server
 ```
 2. Add this JavaScript line, change `pop_xxxxxxxxxxx` with actual `popup_id`:
 ```html
-<script src="https://localhost:3000/pixel.js?id=pop_xxxxxxxxxxx" async></script>
+<script src="http://localhost:3000/pixel.js?id=pop_xxxxxxxxxxx" async></script>
 ```
 
 ### Builder Screenshot:

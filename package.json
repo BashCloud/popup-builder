@@ -3,9 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "client": "npm run server",
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "server": "cd popup-ssr && node server.js"
+    "server": "cd popup-ssr && npm i && npm start"
   },
   "dependencies": {
     "animate.css": "^4.1.1",

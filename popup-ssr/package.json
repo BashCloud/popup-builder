@@ -5,11 +5,15 @@
   "main": "server.js",
   "dependencies": {
     "express": "^4.17.2",
-    "firebase-admin": "^11.0.1",
+    "firebase": "^9.9.4",
+    "minify": "^9.1.0",
     "sass": "^1.54.8",
     "vue": "^3.2.26"
   },
   "scripts": {
-    "build-css": "sass scss/app.scss style.min.css --style compressed"
+    "start": "npm run minify-code && node server.js",
+    "minify-code": "npm run build-css && npm run build-js",
+    "build-css": "sass scss/app.scss style.min.css --style compressed",
+    "build-js": "minify script.js > script.min.js"
   }
 }

@@ -11,24 +11,23 @@ import ElementTextBox from './components/ElementTextBox.js';
 
 import popupStyleMixin from './mixins/popupStyleMixin.js';
 
-import { initializeApp, cert } from 'firebase-admin/app';
-import { getFirestore } from 'firebase-admin/firestore';
+import { firebaseConfig } from './firebaseConfig.js';
+import { initializeApp } from 'firebase/app';
+import { getFirestore, getDoc, doc } from 'firebase/firestore/lite';
 
-import serviceAccountKey from './serviceAccountKey.js';
-
-initializeApp({
-  credential: cert(serviceAccountKey),
-});
-const db = getFirestore();
+const fbApp = initializeApp(firebaseConfig);
+const firestore = getFirestore(fbApp);
 
 const server = express();
 server.get('/pixel.js', async (req, res) => {
   try {
     const css = await readFile('./style.min.css', 'utf8');
-    const js = await readFile('./script.js', 'utf8');
+    const js = await readFile('./script.min.js', 'utf8');
     const { id } = req.query;
-    const schemaSnapshot = await db.collection('popups').doc(id).get();
-    const schema = schemaSnapshot.data();
+    const docRef = doc(firestore, 'popups', id);
+    const docSnap = await getDoc(docRef);
+
+    const schema = docSnap.data();
     const app = createSSRApp({
       data: () => ({
         schema: schema,
@@ -56,21 +55,22 @@ server.get('/pixel.js', async (req, res) => {
   `,
     });
 
-    renderToString(app).then(html => {
-      const popupDom = `<style>${css}</style>${html}`;
-      const result = `const popupDom = \`${popupDom}\`; 
-        const displayDelay = ${parseFloat(schema.display_delay, 10)}; 
-        const popupWidth = ${parseFloat(schema.style.width)}; 
-        ${js}; 
-      `;
-      res.setHeader('content-type', 'text/javascript');
-      res.send(result);
-    });
+    renderToString(app)
+      .then(html => {
+        const popupDom = `<style>${css}</style>${html}`;
+        const result = `const popupDom = \`${popupDom}\`; const displayDelay = ${parseFloat(schema.display_delay, 10)}; const popupWidth = ${parseFloat(schema.style.width)}; ${js}`;
+        res.setHeader('content-type', 'text/javascript');
+        res.send(result);
+      })
+      .catch(err => {
+        console.log(err);
+        res.send('console.log("Something went wrong !")');
+      });
   } catch (err) {
-    res.send('Something went wrong !!');
+    res.send('console.log("Something went wrong !!")');
   }
 });
 
 server.listen(3000, () => {
-  console.log('ready');
+  console.log('ready ==> http://localhost://3000');
 });

@@ -31,6 +31,17 @@ npm run server
 npm run build
 ```
 
+### Display popup in any website:
+
+1. Make sure to run the server code locally:
+```
+npm run server
+```
+2. Add this JavaScript line, change `pop_xxxxxxxxxxx` with actual `popup_id`:
+```html
+<script src="https://localhost:3000/pixel.js?id=pop_xxxxxxxxxxx"></script>
+```
+
 ![Popup Builder App](https://github.com/BashCloud/popup-builder/blob/master/app-preview.png?raw=true)
 
 

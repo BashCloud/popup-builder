@@ -6,7 +6,11 @@
     "firebase": "^9.9.4",
     "minify": "^9.1.0",
     "sass": "^1.54.8",
-    "vue": "^3.2.26"
+    "vue": "^3.2.26",
+    "@babel/cli": "^7.13.10",
+    "@babel/plugin-transform-runtime": "^7.13.10",
+    "@babel/runtime": "^7.13.10",
+    "@babel/preset-env": "^7.13.10"
   },
   "scripts": {
     "dev": "npm run minify-code && node src/transpile-runtime.js",
@@ -18,9 +22,6 @@
     "transpile": "babel src --out-dir ./server --copy-files --extensions '.ts,.js'"
   },
   "devDependencies": {
-    "@babel/cli": "^7.13.10",
-    "@babel/plugin-transform-runtime": "^7.13.10",
-    "@babel/runtime": "^7.13.10",
     "@babel/register": "^7.13.8"
   }
 }

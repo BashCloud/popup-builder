@@ -40,6 +40,9 @@ npm run server
 2. Add this JavaScript line, change `pop_xxxxxxxxxxx` with actual `popup_id`:
 ```html
 <script src="http://localhost:3000/pixel.js?id=pop_xxxxxxxxxxx" async></script>
+<!-- OR  -->
+<script src="https://popups-builder.herokuapp.com/pixel.js?id=pop_xxxxxxxxxxx" async></script>
+<!-- If using the live version, first request might fail, because Heroku restarts the server sometime. In such a case, wait for two minutes and try hit again -->
 ```
 
 ### Builder Screenshot:

@@ -43,6 +43,10 @@ const defaultSchema = {
       },
     }),
   ],
+  _start_time: new Date(),
+  _meta: {
+    user_agent: window.navigator.userAgent,
+  },
 };
 
 export { defaultSchema };

@@ -16,7 +16,7 @@
     "dev": "npm run minify-code && node src/transpile-runtime.js",
     "start": "node server/index.js",
     "build": "npm run minify-code && npm run transpile",
-    "minify-code": "npm run build-css",
+    "minify-code": "npm run build-css && npm run build-js",
     "build-css": "sass static/scss/app.scss static/style.min.css --style compressed",
     "build-js": "minify static/script.js > static/script.min.js",
     "transpile": "babel src --out-dir ./server --copy-files --extensions '.ts,.js'"

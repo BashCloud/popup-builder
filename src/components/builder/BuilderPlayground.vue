@@ -2,47 +2,49 @@
   <div @click="activeRowId = ''">
     <!----------------------------------------------PLAYGROUND------------------------------------------------------------>
     <section class="popup-pg" v-if="schema">
-      <div class="popup-pg__body-wrap" :style="popupBodyStyle" :class="popupAnimationClass">
-        <div class="popup-pg__body">
-          <container @drop="dndDrop" @dragStart="dndDragStart" @dragEnd="dndDragEnd" group-name="builder" v-if="schema" style="height: 100%">
-            <draggable v-for="(row, rowIndex) in schema.rows" :key="row.id">
-              <div
-                class="popup-pg__row"
-                :class="{
-                  '--selected': activeRowId === row.id,
-                  '--hovered': hoverRowIndex === rowIndex,
-                  '--hidden': element.is_hidden,
-                }"
-                v-for="element in row.elements"
-                :key="element.id"
-                @click.stop="selectRow(rowIndex)"
-                @mouseover.stop="selectHoverRow(rowIndex)"
-                @mouseleave.stop="hoverRowIndex = ''"
-              >
-                <PlaygroundElements :element="element" />
+      <div id="popup_animation" :class="popupAnimationClass">
+        <div class="popup-pg__body-wrap" :style="popupBodyStyle">
+          <div class="popup-pg__body">
+            <container @drop="dndDrop" @dragStart="dndDragStart" @dragEnd="dndDragEnd" group-name="builder" :get-ghost-parent="getGhostParent" v-if="schema" style="height: 100%">
+              <draggable v-for="(row, rowIndex) in schema.rows" :key="row.id">
+                <div
+                  class="popup-pg__row"
+                  :class="{
+                    '--selected': activeRowId === row.id,
+                    '--hovered': hoverRowIndex === rowIndex,
+                    '--hidden': element.is_hidden,
+                  }"
+                  v-for="element in row.elements"
+                  :key="element.id"
+                  @click.stop="selectRow(rowIndex)"
+                  @mouseover.stop="selectHoverRow(rowIndex)"
+                  @mouseleave.stop="hoverRowIndex = ''"
+                >
+                  <PlaygroundElements :element="element" />
 
-                <div class="popup-pg__row-mover" :class="{ '--active': activeRowId === row.id || hoverRowIndex === rowIndex }" title="Move">
-                  <i class="light-icon-grip-vertical" />
-                </div>
+                  <div class="popup-pg__row-mover" :class="{ '--active': activeRowId === row.id || hoverRowIndex === rowIndex }" title="Move">
+                    <i class="light-icon-grip-vertical" />
+                  </div>
 
-                <div class="popup-pg__row-actions" v-if="activeRowId === row.id">
-                  <div class="popup-pg__row-action-btn" @click.stop="duplicateRow(rowIndex)" title="Duplicate">
-                    <i class="light-icon-copy" />
-                  </div>
-                  <div class="popup-pg__row-action-btn" @click.stop="deleteRow(rowIndex)" title="Delete">
-                    <i class="light-icon-trash" />
+                  <div class="popup-pg__row-actions" v-if="activeRowId === row.id">
+                    <div class="popup-pg__row-action-btn" @click.stop="duplicateRow(rowIndex)" title="Duplicate">
+                      <i class="light-icon-copy" />
+                    </div>
+                    <div class="popup-pg__row-action-btn" @click.stop="deleteRow(rowIndex)" title="Delete">
+                      <i class="light-icon-trash" />
+                    </div>
                   </div>
                 </div>
-              </div>
-            </draggable>
-          </container>
+              </draggable>
+            </container>
+          </div>
+          <template v-if="appConfig.highlight_droparea">
+            <div class="padding-guideline --vertical --left" :style="{ left: decodePadding(schema.style.padding).left }"></div>
+            <div class="padding-guideline --vertical --right" :style="{ right: decodePadding(schema.style.padding).right }"></div>
+            <div class="padding-guideline --horizontal --top" :style="{ top: decodePadding(schema.style.padding).top }"></div>
+            <div class="padding-guideline --horizontal --bottom" :style="{ bottom: decodePadding(schema.style.padding).bottom }"></div>
+          </template>
         </div>
-        <template v-if="appConfig.highlight_droparea">
-          <div class="padding-guideline --vertical --left" :style="{ left: decodePadding(schema.style.padding).left }"></div>
-          <div class="padding-guideline --vertical --right" :style="{ right: decodePadding(schema.style.padding).right }"></div>
-          <div class="padding-guideline --horizontal --top" :style="{ top: decodePadding(schema.style.padding).top }"></div>
-          <div class="padding-guideline --horizontal --bottom" :style="{ bottom: decodePadding(schema.style.padding).bottom }"></div>
-        </template>
       </div>
       <div class="popup-backdrop" :style="popupBackdropStyle"></div>
     </section>
@@ -107,9 +109,9 @@ export default {
       handler(newValue) {
         // hack to prevent smooth dnd in playground.
         setTimeout(() => {
-          let popupBodyEl = document.getElementsByClassName('popup-pg__body-wrap');
+          let popupBodyEl = document.getElementById('popup_animation');
           if (popupBodyEl) {
-            popupBodyEl[0].className = 'popup-pg__body-wrap animate__animated';
+            popupBodyEl.className = 'animate__animated';
           }
         }, 1000);
       },
@@ -178,6 +180,9 @@ export default {
         const [_top, _right, _bottom, _left] = val_array;
         return { top: _top, bottom: _bottom, right: _right, left: _left };
       }
+    },
+    getGhostParent() {
+      return document.getElementById('app');
     },
     unbindEventListeners() {
       window.removeEventListener('keydown', this.handleKeyDown);

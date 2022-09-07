@@ -1,11 +1,7 @@
 <template>
   <div class="builder-layout">
-    <div class="builder-sidebar">
-      <builder-sidebar />
-    </div>
-    <div class="builder-playground">
-      <BuilderPlayground />
-    </div>
+    <builder-sidebar class="builder-sidebar" />
+    <BuilderPlayground class="builder-playground" />
     <BuilderFooter />
   </div>
 </template>
@@ -33,6 +29,7 @@ export default {
   display: flex;
   align-items: stretch;
   height: 100vh;
+  width: 100vw;
   .builder-sidebar {
     z-index: 1000;
     text-align: left;
@@ -46,6 +43,10 @@ export default {
   .builder-playground {
     flex-grow: 1;
     max-height: 100vh;
+    .popup-pg {
+      height: calc(100vh - 56px);
+      position: relative !important;
+    }
   }
 }
 </style>

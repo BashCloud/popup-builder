@@ -3,9 +3,9 @@ function showPopup() {
   bodyEl.insertAdjacentHTML('beforeend', popupDom);
 }
 function handleClosePopup() {
-  var popupEl = document.getElementsByClassName('popup-pg')[0];
   var popupBackdropEl = document.getElementsByClassName('popup-backdrop')[0];
   popupBackdropEl.addEventListener('click', () => {
+    var popupEl = document.getElementsByClassName('popup-pg')[0];
     popupEl.remove();
   });
 }
@@ -22,8 +22,8 @@ function initPopup() {
 function scalePopup() {
   if (window.innerWidth < popupWidth + 32) {
     let scaleRatio = window.innerWidth / (popupWidth + 32);
-    const popupBodyEl = document.getElementsByClassName('popup-pg__body-wrap')[0];
-    popupBodyEl.style.transform = `scale(${scaleRatio}) !important`;
+    const popupAnimationEl = document.getElementById('popup_animation');
+    popupAnimationEl.style.setProperty('--popup-scale', scaleRatio);
   }
 }
 initPopup();

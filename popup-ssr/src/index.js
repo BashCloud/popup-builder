@@ -1,7 +1,7 @@
 import express from 'express';
 import { createSSRApp } from 'vue';
 import { renderToString } from 'vue/server-renderer';
-import { readFile } from 'fs/promises';
+import { promises as fs } from 'fs';
 
 import ElementButton from './components/ElementButton.js';
 import ElementInput from './components/ElementInput.js';
@@ -21,13 +21,15 @@ const firestore = getFirestore(fbApp);
 const server = express();
 server.get('/pixel.js', async (req, res) => {
   try {
-    const css = await readFile('./style.min.css', 'utf8');
-    const js = await readFile('./script.min.js', 'utf8');
+    const css = await fs.readFile('./static/style.min.css', 'utf8');
+    const js = await fs.readFile('./static/script.min.js', 'utf8');
+
     const { id } = req.query;
     const docRef = doc(firestore, 'popups', id);
     const docSnap = await getDoc(docRef);
 
     const schema = docSnap.data();
+
     const app = createSSRApp({
       data: () => ({
         schema: schema,

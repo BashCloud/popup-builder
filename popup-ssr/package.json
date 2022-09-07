@@ -1,8 +1,6 @@
 {
   "name": "node-starter",
   "version": "0.0.0",
-  "type": "module",
-  "main": "server.js",
   "dependencies": {
     "express": "^4.17.2",
     "firebase": "^9.9.4",
@@ -11,9 +9,18 @@
     "vue": "^3.2.26"
   },
   "scripts": {
-    "start": "npm run minify-code && node server.js",
-    "minify-code": "npm run build-css && npm run build-js",
-    "build-css": "sass scss/app.scss style.min.css --style compressed",
-    "build-js": "minify script.js > script.min.js"
+    "dev": "npm run minify-code && node src/transpile-runtime.js",
+    "start": "node server/index.js",
+    "build": "npm run minify-code && npm run transpile",
+    "minify-code": "npm run build-css",
+    "build-css": "sass static/scss/app.scss static/style.min.css --style compressed",
+    "build-js": "minify static/script.js > static/script.min.js",
+    "transpile": "babel src --out-dir ./server --copy-files --extensions '.ts,.js'"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.13.10",
+    "@babel/plugin-transform-runtime": "^7.13.10",
+    "@babel/runtime": "^7.13.10",
+    "@babel/register": "^7.13.8"
   }
 }

@@ -6,7 +6,7 @@
     "client": "npm run server",
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "server": "cd popup-ssr && npm i && npm start"
+    "server": "cd popup-ssr && npm i && npm run dev"
   },
   "dependencies": {
     "animate.css": "^4.1.1",

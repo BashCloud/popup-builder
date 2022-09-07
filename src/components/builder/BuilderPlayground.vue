@@ -1,5 +1,5 @@
 <template>
-  <div @click="activeRowId = ''">
+  <div @click="activeRowId = ''" style="height: 100%">
     <!----------------------------------------------PLAYGROUND------------------------------------------------------------>
     <section class="popup-pg" v-if="schema">
       <div id="popup_animation" :class="popupAnimationClass">
@@ -113,7 +113,7 @@ export default {
           if (popupBodyEl) {
             popupBodyEl.className = 'animate__animated';
           }
-        }, 1000);
+        }, 5000);
       },
       immediate: true,
     },

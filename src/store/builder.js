@@ -19,7 +19,14 @@ const mutations = {
     state.activeRowId = activeRowId;
   },
   setAppConfig: (state, appConfig) => {
-    state.appConfig = appConfig;
+    state.appConfig = { ...state.appConfig, ...appConfig };
+  },
+  refreshPage: state => {
+    let current_animation = state.schema.display_animation;
+    state.schema = { ...state.schema, display_animation: '' };
+    setTimeout(() => {
+      state.schema = { ...state.schema, current_animation };
+    }, 300);
   },
 };
 
@@ -34,6 +41,9 @@ const actions = {
   },
   setAppConfig: ({ commit }, appConfig) => {
     commit('setAppConfig', appConfig);
+  },
+  refreshPage: ({ commit }) => {
+    commit('refreshPage');
   },
 };
 

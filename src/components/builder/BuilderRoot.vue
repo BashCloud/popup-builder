@@ -1,7 +1,11 @@
 <template>
   <div class="builder-layout">
     <builder-sidebar class="builder-sidebar" />
-    <BuilderPlayground class="builder-playground" />
+    <div class="builder-playground">
+      <DevicePreviewToggle>
+        <BuilderPlayground />
+      </DevicePreviewToggle>
+    </div>
     <BuilderFooter />
   </div>
 </template>
@@ -12,11 +16,13 @@ import builderStore from '@/store/builder.js';
 import BuilderSidebar from './BuilderSidebar.vue';
 import BuilderPlayground from './BuilderPlayground.vue';
 import BuilderFooter from './BuilderFooter.vue';
+import DevicePreviewToggle from '@/components/preview/DevicePreviewToggle.vue';
 export default {
   components: {
     BuilderSidebar,
     BuilderPlayground,
     BuilderFooter,
+    DevicePreviewToggle,
   },
   created() {
     this.$store.registerModule('builder', builderStore);
@@ -42,9 +48,9 @@ export default {
   }
   .builder-playground {
     flex-grow: 1;
-    max-height: 100vh;
+    height: calc(100vh - 56px);
     .popup-pg {
-      height: calc(100vh - 56px);
+      height: 100%;
       position: relative !important;
     }
   }

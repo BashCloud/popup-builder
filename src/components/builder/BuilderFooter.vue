@@ -1,14 +1,14 @@
 <template>
   <div class="builder-footer">
-    <div></div>
+    <div style="width: 206px"></div>
     <div class="preview-devices">
-      <div class="preview-device btn --selected">
+      <div class="preview-device btn" :class="{ '--selected': appConfig.preview_device === 'desktop' }" @click="setPreviewDevice('desktop')">
         <i class="light-icon-device-laptop"></i>
       </div>
-      <div class="preview-device btn">
+      <div class="preview-device btn" :class="{ '--selected': appConfig.preview_device === 'tablet' }" @click="setPreviewDevice('tablet')">
         <i class="light-icon-device-tablet"></i>
       </div>
-      <div class="preview-device btn">
+      <div class="preview-device btn" :class="{ '--selected': appConfig.preview_device === 'mobile' }" @click="setPreviewDevice('mobile')">
         <i class="light-icon-device-mobile"></i>
       </div>
     </div>
@@ -60,6 +60,40 @@ export default {
       }
       window.open(`/preview?id=${this.schema.id}`, '_blank');
     },
+    pageRefresh() {
+      let current_animation = this.schema.display_animation;
+      this.schema.display_animation = '';
+      setTimeout(() => {
+        this.schema.display_animation = current_animation;
+      }, 300);
+    },
+    setPreviewDevice(newDevice) {
+      this.appConfig.preview_device = newDevice;
+      let deviceScreen = document.querySelector('.pulkit-device .screen');
+      let popupWidth = parseFloat(this.schema.style.width);
+      let deviceWidth = deviceScreen.clientWidth;
+      switch (newDevice) {
+        case 'desktop': {
+          deviceWidth = 1024;
+          break;
+        }
+        case 'tablet': {
+          deviceWidth = 576;
+          break;
+        }
+        case 'mobile': {
+          deviceWidth = 375;
+          break;
+        }
+      }
+      if (deviceWidth < popupWidth + 64) {
+        let scaleRatio = deviceWidth / (popupWidth + 64);
+        deviceScreen.style.setProperty('--popup-scale', scaleRatio);
+      } else {
+        deviceScreen.style.setProperty('--popup-scale', 1);
+      }
+      this.pageRefresh();
+    },
   },
 };
 </script>
@@ -74,7 +108,7 @@ export default {
   width: 100%;
   height: 56px;
   padding: 12px;
-  padding-left: 440px;
+  padding-left: 320px;
 
   display: flex;
   align-items: center;

@@ -12,6 +12,7 @@ function handleClosePopup() {
 function initPopup() {
   var headEl = document.head || document.getElementsByTagName('head')[0];
   headEl.insertAdjacentHTML('beforeend', `<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />`);
+  window.popupDisplayDelay = displayDelay;
   setTimeout(() => {
     showPopup();
     scalePopup();
@@ -20,8 +21,8 @@ function initPopup() {
 }
 
 function scalePopup() {
-  if (window.innerWidth < popupWidth + 32) {
-    let scaleRatio = window.innerWidth / (popupWidth + 32);
+  if (window.innerWidth < popupWidth + 64) {
+    let scaleRatio = window.innerWidth / (popupWidth + 64);
     const popupAnimationEl = document.getElementById('popup_animation');
     popupAnimationEl.style.setProperty('--popup-scale', scaleRatio);
   }

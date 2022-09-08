@@ -54,11 +54,13 @@ server.get('/pixel.js', async (req, res) => {
         ElementTextBox: _ElementTextBox.default
       },
       template: `<section class="popup-pg" v-if="schema">
-    <div class="popup-pg__body-wrap" :style="popupBodyStyle" :class="popupAnimationClass">
-      <div class="popup-pg__body">
-        <div v-for="(row, rowIndex) in schema.rows" :key="row.id">
-          <div class="popup-pg__row" v-for="element in row.elements" :key="element.id">
-            <component :is="element.element_type" :element="element" />
+    <div id="popup_animation" :class="popupAnimationClass">
+      <div class="popup-pg__body-wrap" :style="popupBodyStyle">
+        <div class="popup-pg__body">
+          <div v-for="(row, rowIndex) in schema.rows" :key="row.id">
+            <div class="popup-pg__row" v-for="element in row.elements" :key="element.id">
+              <component :is="element.element_type" :element="element" />
+            </div>
           </div>
         </div>
       </div>

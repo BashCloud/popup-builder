@@ -96,9 +96,9 @@ export default {
     },
     previewUrl() {
       if (this.schema) {
-        return `https://popup-builder.netlify.app/preview?id=${this.schema.id}`;
+        return `${window.location.origin}/preview?id=${this.schema.id}`;
       } else {
-        return 'https://popup-builder.netlify.app/preview?id=';
+        return `${window.location.origin}/preview?id=`;
       }
     },
     embedCode() {
